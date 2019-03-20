@@ -44,9 +44,9 @@ class UsersController < ApplicationController
     counts(@user)
   end
   
-  def reverses_of_likes
+  def unlikes
     @user = User.find(params[:id])
-    @reverses_of_likes = @user.reverses_of_likes.page(params[:page])
+    @reverses_of_likes = @user.unlikes.page(params[:page])
     # counts(@user)
   end
 
