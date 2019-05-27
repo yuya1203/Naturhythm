@@ -6,7 +6,7 @@
 <% else %>
     <%= form_for(current_user.favorites.build) do |f| %>
         <%= hidden_field_tag :micropost_id, micropost.id %>
-        <%= f.submit 'お気に入り追加', class: 'btn btn-primary btn-block' %>
+        <%= f.submit 'お気に入り追加', class: 'btn btn-primary btn-xs' %>
     <% end %>
 <% end %>
 
