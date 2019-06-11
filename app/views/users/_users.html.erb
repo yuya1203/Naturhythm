@@ -3,7 +3,7 @@
     <% users.each do |user| %>
       <li class="media">
         <div class="media-left">
-          <p><%= image_tag user.profile_image.url if user.profile_image? %></p>
+          <p><%= image_tag user.profile_image.url, size: "50x50" if user.profile_image? %></p>
         </div>
         <div class="media-body">
           <div>
