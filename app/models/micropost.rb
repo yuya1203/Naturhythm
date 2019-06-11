@@ -15,6 +15,4 @@ class Micropost < ApplicationRecord
 
   acts_as_taggable
   acts_as_taggable_on :tag_list
-
-
 end
