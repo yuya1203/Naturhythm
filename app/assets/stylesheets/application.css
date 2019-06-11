@@ -10,6 +10,34 @@
  * files in this directory. Styles in this file should be added after the last require_* statement.
  * It is generally better to create a new file per style scope.
  *
+ *= require bootstrap-tagsinput
  *= require_tree .
  *= require_self
  */
+
+ @charset "utf-8";
+
+/* body */
+body {
+  background: #f8f4e6;
+}
+footer {
+  margin-top: 40px;
+}
+
+/* navbar */
+.navbar {
+  background-color: #f0e68c;
+  height: 60px;
+  font-size: 16px;
+  padding-top: 6px;
+}
+.navbar-brand {
+  font-size: 35px;
+  color: #665a1a;
+  font-family: cursive;
+}
+.navbar-header img {
+  margin-top: 0px;
+  height: 35px;
+}

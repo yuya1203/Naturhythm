@@ -1,0 +1,3 @@
+$('#comment-micropost-<%= @micropost.id.to_s %>').
+  html('<%= j render "microposts/comment_list", { micropost: @micropost } %>');
+$('#comment-form-micropost-<%= @micropost.id.to_s %> #comment_comment').val("");

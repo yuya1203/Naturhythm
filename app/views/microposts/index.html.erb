@@ -1,0 +1,36 @@
+<% if logged_in? %>
+  <div class="row">
+  <!--#検索フォーム-->
+  <div class="pull-right">
+    <%= search_form_for @search do |f| %>
+      <div class="form-group">
+      　<!--#検索対象のカラムを:hoge_contで示す。itemnameだったらitemname_cont -->
+        <%= f.label :bottle_name_cont, "ワイン名検索" %>
+        <%= f.search_field :bottle_name_cont, class: "form-control" %>
+      </div>
+      <div class="actions"><%= f.submit "Search" %></div>
+      <br>
+      <%= render 'microposts/search' %>
+    <% end %>
+  </div>
+  <div class="col-xs-8">
+    <%= render 'microposts/microposts', microposts: @microposts %>
+  </div>
+  <br>
+  <div id='tag_cloud'> <!-- タグクラウド-->
+    <p>タグ一覧</p>
+    <% tag_cloud Micropost.tag_counts, %w{s m l} do |tag, css_class| %>
+      <%= link_to tag.name, tag_path(tag.name), class: css_class %>
+    <% end %>
+  </div>
+    <br>
+    <%#= paginate @microposts %>
+<% else %>
+  <div class="center jumbotron">
+    <div class="text-center">
+      <h1>自然派ワイン専門のレビューサイトです</h1>
+      <%= link_to '新規登録する!', signup_path, class: 'btn btn-lg btn-primary'%>
+    </div>
+  </div>
+<% end %>
+

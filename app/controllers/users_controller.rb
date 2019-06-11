@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
-  before_action :require_user_logged_in, only: [:index, :show, :followings, :followers, :likes, :reverses_of_likes]
+  before_action :require_user_logged_in, only: [:index, :show, :edit, :update, :followings, :followers, :likes, :reverses_of_likes]
+
   def index
     @users = User.all.page(params[:page])
   end
@@ -16,13 +17,32 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
-    
     if @user.save
       flash[:success] = 'ユーザーを登録しました。'
       redirect_to @user
     else
       flash.now[:danger] = 'ユーザーの登録に失敗しました。'
       render :new
+    end
+  end
+
+  def edit
+    @user = User.find(params[:id])
+  end
+
+  def update
+    @user = User.find(params[:id])
+    #編集しようとしてるユーザーがログインユーザーとイコールかをチェック
+    if current_user == @user
+      if @user.update(user_params)
+        flash[:success] = 'ユーザー情報を編集しました。'
+        render :edit
+      else
+        flash.now[:danger] = 'ユーザー情報の編集に失敗しました。'
+        render :edit
+      end
+    else
+      redirect_to root_url
     end
   end
   
@@ -52,8 +72,8 @@ class UsersController < ApplicationController
 
   private
   
-  def user_params
-    params.require(:user).permit(:name, :email, :password, :password_confirmation)
-  end
+    def user_params
+      params.require(:user).permit(:name, :email, :password, :password_confirmation, :profile_image)
+    end
 
 end

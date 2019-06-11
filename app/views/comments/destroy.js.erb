@@ -1,0 +1,2 @@
+$('#comment-micropost-<%= @micropost.id.to_s %>').
+  html('<%= j render "microposts/comment_list", { micropost: @micropost } %>');
