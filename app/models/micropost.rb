@@ -5,6 +5,7 @@ class Micropost < ApplicationRecord
   validates :producer, presence: true
   validates :production_area, presence: true
   validates :image, presence: true
+  validates :evaluation, presence: true
   validates :content, presence: true, length: { maximum: 255 }
 
   has_many :favorites, dependent: :destroy
@@ -15,4 +16,8 @@ class Micropost < ApplicationRecord
 
   acts_as_taggable
   acts_as_taggable_on :tag_list
+
+  # def self.ranking
+  #   self.group(:evaluation).order('count_evaluation DESC').limit(10).count(:evaluation)
+  # end
 end

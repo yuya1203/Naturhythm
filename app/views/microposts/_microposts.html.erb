@@ -14,24 +14,26 @@
           <p>生産者： <%= micropost.producer %></p>
           <p>生産地： <%= micropost.production_area %></p>
           <p>メモ： <%= micropost.content %></p>
-          <!--<p>評価： <%= micropost.evaluation %></p>-->
+          <p>評価：
+            <div class="evaluation_a"><% s = "★" %>
+              <% micropost.evaluation.to_i.times do |t| %>
+                <%= s %>
+              <% end %>
+            </div>
+          </p>
           <p><%= image_tag micropost.image.url, size: "800x800" if micropost.image? %></p>
         </div>
         <div>
           <% if micropost.tag_list? %>
-              <br>
-              tag: 
-              <br>
+            <br>
+            tag: 
+            <br>
           <% end %>
-              <span class="label label-info"><%= raw micropost.tag_list.map { |t| link_to "#"+" "+t, tag_path(t) }.join(' ') %></span>
-              <br>
+            <span class="label label-info"><%= raw micropost.tag_list.map { |t| link_to "#"+" "+t, tag_path(t) }.join(' ') %></span>
+            <br>
+          <%= link_to '投稿の詳細', micropost_path(micropost) %><br>
           <%= link_to 'お気に入り一覧', likes_user_path(micropost.user) %>
           <%= render 'favorites/favorite_button', micropost: micropost %>
-        </div>
-        <div>
-          <% if current_user == micropost.user %>
-              <%= link_to "　投稿を削除　", micropost, method: :delete, data: { confirm: "You sure?" }, class: 'btn btn-danger btn-xs' %>
-          <% end %>
         </div>
         <div id = "comment-micropost-<%= micropost.id.to_s %>">
           <%#= render 'comment_list', { micropost: @micropost } %>

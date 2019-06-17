@@ -11,6 +11,7 @@ Rails.application.routes.draw do
 
   get 'rankings/favorite', to: 'rankings#favorite'
   get 'rankings/follower', to: 'rankings#follower'
+  #get 'rankings/evaluation', to: 'rankings#evaluation'
 
   get 'tags/:tag', to: 'microposts#index', as: :tag
 
@@ -27,7 +28,7 @@ Rails.application.routes.draw do
     #   get :search
     # end
   end
-  resources :microposts, only: [:new, :show, :create, :destroy, :index] do
+  resources :microposts, only: [:new, :show, :create, :destroy, :index, :edit, :update] do
     resources :comments, only: [:create, :destroy]
   end
   resources :relationships, only: [:create, :destroy]
