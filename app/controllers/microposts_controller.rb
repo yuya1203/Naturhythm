@@ -49,7 +49,7 @@ class MicropostsController < ApplicationController
     #if current_user == @user
       if @micropost.update(micropost_params)
         flash[:success] = 'ユーザー情報を編集しました。'
-        render :edit
+        redirect_to root_url
       else
         flash.now[:danger] = 'ユーザー情報の編集に失敗しました。'
         render :edit

@@ -11,8 +11,8 @@ class RankingsController < ApplicationController
     @users = User.find(@ranking_counts.keys)
   end
 
-  # def evaluation
-  #   @ranking_counts = Micropost.ranking
-  #   @users = Micropost.find(@ranking_counts.keys)
-  # end
+  def evaluation
+    @ranking_counts = Micropost.ranking
+    @microposts = Micropost.find(@ranking_counts.keys)
+  end
 end

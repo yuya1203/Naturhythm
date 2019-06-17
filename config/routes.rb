@@ -11,7 +11,7 @@ Rails.application.routes.draw do
 
   get 'rankings/favorite', to: 'rankings#favorite'
   get 'rankings/follower', to: 'rankings#follower'
-  #get 'rankings/evaluation', to: 'rankings#evaluation'
+  get 'rankings/evaluation', to: 'rankings#evaluation'
 
   get 'tags/:tag', to: 'microposts#index', as: :tag
 

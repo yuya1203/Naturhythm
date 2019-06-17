@@ -17,20 +17,20 @@
         </div>
         評価：
         <div class="evaluation">
-          <%= f.radio_button :evaluation, 5, id: "star1" %>
-          <label for="star1"><span class="text">最高</span>★</label>
+          <%= f.radio_button :evaluation, 5, id: "star5" %>
+          <label for="star5"><span class="text">最高</span>★</label>
 
-          <%= f.radio_button :evaluation, 4, id: "star2" %>
-          <label for="star2"><span class="text">良い</span>★</label>
+          <%= f.radio_button :evaluation, 4, id: "star4" %>
+          <label for="star4"><span class="text">良い</span>★</label>
 
           <%= f.radio_button :evaluation, 3, id: "star3" %>
           <label for="star3"><span class="text">普通</span>★</label>
 
           <%= f.radio_button :evaluation, 2, id: "star2" %>
-          <label for="star4"><span class="text">悪い</span>★</label>
+          <label for="star2"><span class="text">悪い</span>★</label>
 
           <%= f.radio_button :evaluation, 1, id: "star1" %>
-          <label for="star5"><span class="text">最悪</span>★</label>
+          <label for="star1"><span class="text">最悪</span>★</label>
         </div>
         <%= f.submit '投稿を編集する', class: 'btn btn-primary btn-xs' %>
       <% end %>

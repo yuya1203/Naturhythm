@@ -17,7 +17,7 @@ class Micropost < ApplicationRecord
   acts_as_taggable
   acts_as_taggable_on :tag_list
 
-  # def self.ranking
-  #   self.group(:evaluation).order('count_evaluation DESC').limit(10).count(:evaluation)
-  # end
+  def self.ranking
+    self.group(:evaluation).order('count_evaluation DESC').limit(10).count(:evaluation)
+  end
 end

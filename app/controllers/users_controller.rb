@@ -19,7 +19,7 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       flash[:success] = 'ユーザーを登録しました。'
-      redirect_to @user
+      redirect_to login_path
     else
       flash.now[:danger] = 'ユーザーの登録に失敗しました。'
       render :new
@@ -36,7 +36,7 @@ class UsersController < ApplicationController
     if current_user == @user
       if @user.update(user_params)
         flash[:success] = 'ユーザー情報を編集しました。'
-        render :edit
+        redirect_to root_url
       else
         flash.now[:danger] = 'ユーザー情報の編集に失敗しました。'
         render :edit
@@ -75,5 +75,4 @@ class UsersController < ApplicationController
     def user_params
       params.require(:user).permit(:name, :email, :password, :password_confirmation, :profile_image)
     end
-
 end
