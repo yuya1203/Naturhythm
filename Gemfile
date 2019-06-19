@@ -65,5 +65,4 @@ gem 'mini_magick'
 gem 'acts-as-taggable-on'
 gem 'ransack'
 gem 'rails-i18n'
-gem 'fog-aws', group: :production
-gem 'dotenv-rails'
+gem 'fog-aws'
