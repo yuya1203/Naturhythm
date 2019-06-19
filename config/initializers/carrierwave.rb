@@ -12,4 +12,4 @@ if Rails.env.production?
   end
 end
 # 日本語の文字化けを防ぐ
-#CarrierWave::SanitizedFile.sanitize_regexp = /[^[:word:]\.\-\+]/
+CarrierWave::SanitizedFile.sanitize_regexp = /[^[:word:]\.\-\+]/
