@@ -1,38 +1,18 @@
 CarrierWave.configure do |config|
-  config.fog_provider = 'fog/aws'
   config.fog_credentials = {
-    provider:              'AWS',
-    # アクセスキー
-    aws_access_key_id:     'AKIAWDXFBGIO64SKUOVB',
-    # シークレットキー
-    aws_secret_access_key: 'ZEcumF55AzBx+vNGrIWVMvILckYFdTIsP92sEwBT',
-    # Tokyo
-    region:                'ap-northeast-1',
+    provider: 'AWS',
+    aws_access_key_id: ENV['AKIAWDXFBGIO64SKUOVB'],
+    aws_secret_access_key: ENV['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'],
+    region: ENV['ap-northeast-1'],
+    path_style: true
   }
+  config.fog_public = true
+  config.fog_attributes = {'Cache-Control' => 'public, max-age=86400'}
 
-  # 公開・非公開の切り替え
-  config.fog_public     = true
-  # キャッシュの保存期間
-  config.fog_attributes = { 'Cache-Control' => "max-age=#{365.day.to_i}" }
+  config.remove_previously_stored_files_after_update = false
 
-  # キャッシュをS3に保存
-  # config.cache_storage = :fog
-
-  # 環境ごとにS3のバケットを指定
-  case Rails.env
-    when 'production'
-      config.fog_directory = 'naturhythm-image-store'
-      config.asset_host = 'https://naturhythm-image-store.s3-ap-northeast-1.amazonaws.com'
-
-    when 'development'
-      config.fog_directory = 'dev-naturhythm-image-store'
-      config.asset_host = 'https://dev-naturhythm-image-store.s3-ap-northeast-1.amazonaws.com'
-
-    when 'test'
-      config.fog_directory = 'dev-naturhythm-image-store'
-      config.asset_host = 'https://dev-naturhythm-image-store.s3-ap-northeast-1.amazonaws.com'
-  end
+  config.fog_directory = ENV['naturhythm-image']
+  config.asset_host = ENV['naturhythm-image']
 end
-
-# 日本語ファイル名の設定
+# 日本語の文字化けを防ぐ
 CarrierWave::SanitizedFile.sanitize_regexp = /[^[:word:]\.\-\+]/
