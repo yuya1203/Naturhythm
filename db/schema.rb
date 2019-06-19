@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190607064112) do
+ActiveRecord::Schema.define(version: 20190618235843) do
 
   create_table "average_caches", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer  "rater_id"
@@ -42,10 +42,10 @@ ActiveRecord::Schema.define(version: 20190607064112) do
   end
 
   create_table "microposts", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.string   "content"
+    t.text     "content",         limit: 65535
     t.integer  "user_id"
-    t.datetime "created_at",                 null: false
-    t.datetime "updated_at",                 null: false
+    t.datetime "created_at",                    null: false
+    t.datetime "updated_at",                    null: false
     t.string   "image"
     t.string   "bottle_name"
     t.string   "producer"
@@ -132,9 +132,10 @@ ActiveRecord::Schema.define(version: 20190607064112) do
     t.string   "name"
     t.string   "email"
     t.string   "password_digest"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
+    t.datetime "created_at",                    null: false
+    t.datetime "updated_at",                    null: false
     t.string   "profile_image"
+    t.text     "introduction",    limit: 65535
   end
 
   add_foreign_key "comments", "microposts"

@@ -1,6 +1,6 @@
 class MicropostsController < ApplicationController
   before_action :require_user_logged_in
-  before_action :correct_user, only: [:destroy]
+  before_action :correct_user, only: [:destroy, :edit, :update]
   
   def index
     if params[:tag]
@@ -40,13 +40,11 @@ class MicropostsController < ApplicationController
   end
 
   def edit
-    @micropost = Micropost.find(params[:id])
   end
 
   def update
     @micropost = Micropost.find(params[:id])
     #編集しようとしてるユーザーがログインユーザーとイコールかをチェック
-    #if current_user == @user
       if @micropost.update(micropost_params)
         flash[:success] = 'ユーザー情報を編集しました。'
         redirect_to root_url
@@ -54,9 +52,6 @@ class MicropostsController < ApplicationController
         flash.now[:danger] = 'ユーザー情報の編集に失敗しました。'
         render :edit
       end
-    #else
-      #redirect_to root_url
-    #end
   end
 
   def destroy

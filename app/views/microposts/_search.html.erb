@@ -3,7 +3,7 @@
   <p>検索結果</p>
   <% @results.each do |result| %>
     <p><%= link_to result.bottle_name, result %>
-    <%= result.user.name %>
+      <%= result.user.name %>
     </p>
   <% end %>
 <% else %>

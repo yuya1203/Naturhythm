@@ -1,21 +1,36 @@
-<% if logged_in? %>
-  <div class="row"> <!-- 投稿編集フォーム -->
-    <aside class="col-md-4">
-      <%= form_for(@micropost) do |f| %>
-        <div class="form-group">
-          ボトル名：<%= f.text_field :bottle_name, class: 'form-control', rows: 5, placeholder: "例：ロマネ・コンティ" %>
-          生産者：<%= f.text_field :producer, class: 'form-control', rows: 5, placeholder: "例：ドメーヌ・ド・ラ・ロマネ・コンティ" %>
-          生産地：<%= f.text_field :production_area, class: 'form-control', rows: 5, placeholder: "例：ブルゴーニュ地方, ヴォーヌ・ロマネ村" %>
-          メモ：<%= f.text_area :content, class: 'form-control', rows: 5, placeholder: "香り、味わい、ぶどう品種、ヴィンテージ、値段、生産年、合わせた料理など..." %>
-        </div>
-        <div class="form-group">
-          <!--<%= f.label :micropost, :tag_list %> -->
-          タグ：<br>
-            <%= f.text_field :tag_list, value: @micropost.tag_list.join(','), class: "form-control", "data-role" => "tagsinput" , placeholder: "カンマ区切りで複数可"%><br>
-          写真：<%= f.file_field :image, class: "image" %>
-          <!--<p><%= f.check_box :remove_image %>画像を削除する</p> -->
-        </div>
-        評価：
+<div class="text-center">
+  <h1>レビュー内容編集</h1>
+  <br>
+</div>
+<div class="row"> <!-- 投稿編集フォーム -->
+  <aside class="col-md-6 col-md-offset-3">
+    <%= form_for(@micropost) do |f| %>
+      <div class="form-group">
+        <%= f.label :bottle_name, 'ボトル名' %>
+        <%= f.text_field :bottle_name, class: 'form-control', rows: 5, placeholder: "例：ロマネ・コンティ" %>
+      </div>
+      <div class="form-group">
+        <%= f.label :producer, '生産者' %>
+        <%= f.text_field :producer, class: 'form-control', rows: 5, placeholder: "例：ドメーヌ・ド・ラ・ロマネ・コンティ" %>
+      </div>
+      <div class="form-group">
+        <%= f.label :production_area, '生産地' %>
+        <%= f.text_field :production_area, class: 'form-control', rows: 5, placeholder: "例：ブルゴーニュ地方, ヴォーヌ・ロマネ村" %>
+      </div>
+      <div class="form-group">
+        <%= f.label :content, '詳細メモ' %>
+        <%= f.text_area :content, class: 'form-control', rows: 5, placeholder: "香り、味わい、ぶどう品種、ヴィンテージ、値段、生産年、合わせた料理など..." %>
+      </div>
+      <div class="form-group">
+        <%= f.label :tag_list, 'タグ' %><br>
+        <%= f.text_field :tag_list, value: @micropost.tag_list.join(','), class: "form-control", "data-role" => "tagsinput" , placeholder: "カンマ区切りで複数可"%><br>
+      </div>
+      <div class="form-group">
+        <%= f.label :image, '写真' %>
+        <%= f.file_field :image, class: "image" %>
+      </div>
+      <div class="form-group">
+        <%= f.label :evaluation, '評価' %>
         <div class="evaluation">
           <%= f.radio_button :evaluation, 5, id: "star5" %>
           <label for="star5"><span class="text">最高</span>★</label>
@@ -32,15 +47,9 @@
           <%= f.radio_button :evaluation, 1, id: "star1" %>
           <label for="star1"><span class="text">最悪</span>★</label>
         </div>
-        <%= f.submit '投稿を編集する', class: 'btn btn-primary btn-xs' %>
-      <% end %>
-    </aside>
-  </div>
-<% else %>
-  <div class="center jumbotron">
-    <div class="text-center">
-      <h1>Welcome to the Microposts</h1>
-      <%= link_to 'Sign up now!', signup_path, class: 'btn btn-lg btn-primary'%>
-    </div>
-  </div>
-<% end %>
+      </div>
+      <%= f.submit '更新する', class: 'btn btn-primary btn-xs' %>
+    <% end %>
+  </aside>
+</div>
+<br>

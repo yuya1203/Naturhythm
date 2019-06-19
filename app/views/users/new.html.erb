@@ -25,7 +25,13 @@
         <%= f.label :password_confirmation, 'パスワード確認' %>
         <%= f.password_field :password_confirmation, class: 'form-control', placeholder: "同上のパスワード" %>
       </div>
-      <%= f.submit '登録する！', class: 'btn btn-primary btn-block' %>
+      <div class="form-group">
+        <%= f.label :introduction, '自己紹介' %>
+        <%= f.text_area :introduction, class: 'form-control', placeholder: "簡単な自己紹介（空欄でも可）" %>
+      </div>
+      <%= f.submit '登録する', class: 'btn btn-primary btn-block' %>
     <% end %>
+    <br>
+    <p>登録済身の方はこちら <%= link_to 'ログイン', login_path %></p>
   </div>
 </div>

@@ -11,7 +11,11 @@
               <%= link_to micropost.content, micropost %>
             </p>
             <p>
-              <%= image_tag micropost.image.url, size: "50x50" if micropost.image? %>
+              <% if micropost.image? %>
+                <%= image_tag micropost.image.url, size: 50 %>
+              <% else %>
+                <%= image_tag('white.png', size: 50) %>
+              <% end %>
             </p>
             <div class="buttons text-center">
             </div>

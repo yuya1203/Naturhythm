@@ -6,7 +6,6 @@ class User < ApplicationRecord
                       format: { with: /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i }, 
                       uniqueness: { case_sensitive: false }
   validates :password, length: {minimum: 6 }
-  validates :profile_image, presence: true
 
   mount_uploader :profile_image, ImageUploader
 

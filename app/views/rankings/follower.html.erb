@@ -11,7 +11,11 @@
               <%= link_to user.name, user %>
             </p>
             <p>
-              <%= image_tag user.profile_image.url, size: "50x50" if user.profile_image? %>
+              <% if user.profile_image? %>
+                <%= image_tag user.profile_image.url, size: 50 %>
+              <% else %>
+                <img class="media-object img-rounded" src="<%= gravatar_url(user, size: 50) %>" alt="">
+              <% end %>
             </p>
             <div class="buttons text-center">
             </div>
