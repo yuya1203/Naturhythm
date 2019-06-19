@@ -23,3 +23,8 @@
   <% end %>
 </div>
 <br>
+<% if @microposts %>
+  <%= paginate @microposts %>
+<% else %>
+  <%= paginate @m %>
+<% end %>

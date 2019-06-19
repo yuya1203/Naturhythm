@@ -5,6 +5,8 @@ class MicropostsController < ApplicationController
   def index
     if params[:tag]
       @microposts = Micropost.tagged_with(params[:tag])
+      @microposts = @microposts.page(params[:page])
+      @m = Micropost.order('created_at DESC').page(params[:page])
     else
       @microposts = Micropost.order('created_at DESC').page(params[:page])
     end
