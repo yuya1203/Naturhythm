@@ -1,19 +1,14 @@
-CarrierWave.configure do |config|
-  config.fog_provider = 'fog/aws'
-  config.fog_credentials = {
-    provider: 'AWS',
-    aws_access_key_id: ENV['AKIAWDXFBGIO64SKUOVB'],
-    aws_secret_access_key: ENV['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'],
-    region: ENV['ap-northeast-1'],
-    path_style: true
-  }
-  config.fog_public = true
-  config.fog_attributes = {'Cache-Control' => 'public, max-age=86400'}
-
-  config.remove_previously_stored_files_after_update = false
-
-  config.fog_directory = ENV['naturhythm-image']
-  config.asset_host = ENV['naturhythm-image']
+if Rails.env.production?
+  CarrierWave.configure do |config|
+    config.fog_credentials = {
+      # Amazon S3用の設定
+      :provider              => 'AWS',
+      :region                => ENV['S3_REGION'], 
+      :aws_access_key_id     => ENV['S3_ACCESS_KEY'],
+      :aws_secret_access_key => ENV['S3_SECRET_KEY']
+    }
+    config.fog_directory     =  ENV['S3_BUCKET']
+  end
 end
 # 日本語の文字化けを防ぐ
-CarrierWave::SanitizedFile.sanitize_regexp = /[^[:word:]\.\-\+]/
+#CarrierWave::SanitizedFile.sanitize_regexp = /[^[:word:]\.\-\+]/
