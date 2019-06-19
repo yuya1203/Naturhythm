@@ -62,14 +62,6 @@ ActiveRecord::Schema.define(version: 20190618235843) do
     t.datetime "updated_at"
   end
 
-  create_table "photos", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.string   "image",        null: false
-    t.integer  "micropost_id", null: false
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
-    t.index ["micropost_id"], name: "index_photos_on_micropost_id", using: :btree
-  end
-
   create_table "rates", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer  "rater_id"
     t.string   "rateable_type"
@@ -143,7 +135,6 @@ ActiveRecord::Schema.define(version: 20190618235843) do
   add_foreign_key "favorites", "microposts"
   add_foreign_key "favorites", "users"
   add_foreign_key "microposts", "users"
-  add_foreign_key "photos", "microposts"
   add_foreign_key "relationships", "users"
   add_foreign_key "relationships", "users", column: "follow_id"
 end
