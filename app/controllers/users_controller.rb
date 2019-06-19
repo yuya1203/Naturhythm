@@ -37,10 +37,10 @@ class UsersController < ApplicationController
     #編集しようとしてるユーザーがログインユーザーとイコールかをチェック
     if current_user == @user
       if @user.update(user_params)
-        flash[:success] = 'ユーザー情報を編集しました。'
+        flash[:success] = 'ユーザー情報を更新しました。'
         redirect_to root_url
       else
-        flash.now[:danger] = 'ユーザー情報の編集に失敗しました。'
+        flash.now[:danger] = 'ユーザー情報の更新に失敗しました。'
         render :edit
       end
     else

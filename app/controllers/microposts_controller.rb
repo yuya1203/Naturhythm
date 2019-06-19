@@ -30,11 +30,11 @@ class MicropostsController < ApplicationController
   def create
     @micropost = current_user.microposts.build(micropost_params)
     if @micropost.save
-      flash[:success] = 'メッセージを投稿しました。'
+      flash[:success] = 'レビューを投稿しました。'
       redirect_to root_url
     else
       @microposts = current_user.microposts.order('created_at DESC').page(params[:page])
-      flash.now[:danger] = 'メッセージの投稿に失敗しました。'
+      flash.now[:danger] = 'レビューの投稿に失敗しました。'
       render 'microposts/new'
     end
   end
@@ -46,17 +46,17 @@ class MicropostsController < ApplicationController
     @micropost = Micropost.find(params[:id])
     #編集しようとしてるユーザーがログインユーザーとイコールかをチェック
       if @micropost.update(micropost_params)
-        flash[:success] = 'ユーザー情報を編集しました。'
+        flash[:success] = 'レビュー内容を更新しました。'
         redirect_to root_url
       else
-        flash.now[:danger] = 'ユーザー情報の編集に失敗しました。'
+        flash.now[:danger] = 'レビューの更新に失敗しました。'
         render :edit
       end
   end
 
   def destroy
     @micropost.destroy
-    flash[:success] = 'メッセージを削除しました。'
+    flash[:success] = 'レビューを削除しました。'
     redirect_to root_url
   end
 
