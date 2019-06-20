@@ -26,6 +26,20 @@
             </li>
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                高評価
+                <span class="caret"></span>
+              </a>
+              <ul class="dropdown-menu">
+                <li>
+                  <%= link_to '5つ星レビュー', microposts_high_rating_5_path %>
+                </li>
+                <li>
+                  <%= link_to '4つ星レビュー', microposts_high_rating_4_path %>
+                </li>
+              </ul>
+            </li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
                 <span class="glyphicon glyphicon-signal" aria-hidden="true"></span>
                 ランキング
                 <span class="caret"></span>

@@ -69,6 +69,16 @@ class MicropostsController < ApplicationController
     @results = @search.result
   end
 
+  def high_rating_5
+    @microposts = Micropost.where(evaluation: 5).order('created_at DESC').page(params[:page])
+    @count = Micropost.where(evaluation: 5.0).count
+
+  end
+
+  def high_rating_4
+    @microposts = Micropost.where(evaluation: 4.0).order('created_at DESC').page(params[:page])
+    @count = Micropost.where(evaluation: 4.0).count
+  end
   private
   
     def micropost_params

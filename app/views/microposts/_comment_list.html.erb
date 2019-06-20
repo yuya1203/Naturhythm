@@ -1,19 +1,18 @@
 <% micropost.comments.each do |comment| %>
   <div class="mb-2">
-    <div class="media-left">
+    <div class="media-body">
       <span>
         <strong>
           <%= link_to comment.user.name, user_path(comment.user), class: "no-text-decoration black-color" %>
         </strong>
       </span>
-    </div>
-    <div class="media-body">
       <span class="text-muted"><%= micropost.created_at.strftime("%Y年%m月%d日 %H:%M") %></span>
       <% if comment.user == current_user %>
         <%= link_to "削除", micropost_comment_path(micropost.id, comment), method: :delete, remote: true, class: "delete-comment" %>
       <% end %>
       <br>
       <span><%= comment.comment %></span>
+      <br>
     </div>
   </div>
 <% end %>

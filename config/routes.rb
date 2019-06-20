@@ -15,8 +15,11 @@ Rails.application.routes.draw do
   get 'tags/:tag', to: 'microposts#index', as: :tag
 
   get 'microposts/search', to: 'microposts#search'
-  
+  get 'microposts/high_rating_5', to: 'microposts#high_rating_5'
+  get 'microposts/high_rating_4', to: 'microposts#high_rating_4'
+
   get 'signup', to: 'users#new'
+
   resources :users, only: [:index, :show, :new, :create, :edit, :update] do
     member do
       get :followings
@@ -27,10 +30,12 @@ Rails.application.routes.draw do
     #   get :search
     # end
   end
+
   resources :microposts, only: [:new, :show, :create, :destroy, :index, :edit, :update] do
     resources :comments, only: [:create, :destroy]
   end
+
   resources :relationships, only: [:create, :destroy]
-  resources :favorites, only: [:create, :destroy]
   
+  resources :favorites, only: [:create, :destroy]
 end
