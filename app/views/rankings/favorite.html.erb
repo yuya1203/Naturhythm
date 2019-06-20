@@ -1,33 +1,39 @@
 <h1>お気に入りランキング</h1>
-<div class="row">
-  <% @microposts.each_with_index do |micropost, index| %>
-    <div class="micropost">
-      <div class="col-md-3 col-sm-4 col-xs-12">
-        <div class="panel panel-default">
-          <div class="panel-heading text-center">
-          </div>
-          <div class="panel-body">
-            <p class="micropost-title">
-              <%= link_to micropost.content, micropost %>
-            </p>
-            <p>
-              <% if micropost.image? %>
-                <%= image_tag micropost.image.url, size: 50 %>
-              <% else %>
-                <%= image_tag('white.png', size: 50) %>
-              <% end %>
-            </p>
-            <div class="buttons text-center">
+<div class="container">
+  <div class="row">
+    <% @microposts.each_with_index do |micropost, index| %>
+      <div class="micropost">
+        <div class="col-md-3 col-sm-4 col-xs-12">
+          <div class="panel panel-default">
+            <div class="panel-heading text-center">
             </div>
-          </div>
-          <div class="panel-footer">
-            <p class="text-center">
-              <%= index+1 %>位: 
-              <%= @ranking_counts[micropost.id] %>票
-            </p>
+            <div class="panel-body">
+              <p class="micropost-title">
+                <% if micropost.content.length > 15%>
+                  <%= link_to micropost.content.truncate(10) + "...", micropost %>
+                <% else %>
+                  <%= link_to micropost.content, micropost %>
+                <% end %>
+              </p>
+              <p>
+                <% if micropost.image? %>
+                  <%= image_tag micropost.image.url, size: 50 %>
+                <% else %>
+                  <%= image_tag('white.png', size: 50) %>
+                <% end %>
+              </p>
+              <div class="buttons text-center">
+              </div>
+            </div>
+            <div class="panel-footer">
+              <p class="text-center">
+                <%= index+1 %>位: 
+                <%= @ranking_counts[micropost.id] %>票
+              </p>
+            </div>
           </div>
         </div>
       </div>
-    </div>
-  <% end %>
+    <% end %>
+  </div>
 </div>
