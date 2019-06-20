@@ -9,8 +9,8 @@
             </div>
             <div class="panel-body">
               <p class="micropost-title">
-                <% if micropost.content.length > 19%>
-                  <%= link_to micropost.content.truncate(16), micropost %>
+                <% if micropost.content.length > 15%>
+                  <%= link_to micropost.content.truncate(12), micropost %>
                 <% else %>
                   <%= link_to micropost.content, micropost %>
                 <% end %>
