@@ -1,5 +1,3 @@
-<div class="row">
-<!--#検索フォーム-->
 <div class="pull-right">
   <%= search_form_for @search do |f| %>
     <div class="form-group">
@@ -14,7 +12,13 @@
 </div>
 <div class="col-xs-8">
   <%= render 'microposts/microposts', microposts: @microposts %>
+  <% if @microposts %>
+    <%= paginate @microposts %>
+  <% else %>
+    <%= paginate @m %>
+  <% end %>
 </div>
+<br>
 <br>
 <div id='tag_cloud'> <!-- タグクラウド-->
   <p>タグ一覧</p>
@@ -23,8 +27,3 @@
   <% end %>
 </div>
 <br>
-<% if @microposts %>
-  <%= paginate @microposts %>
-<% else %>
-  <%= paginate @m %>
-<% end %>
