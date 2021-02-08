@@ -60,7 +60,7 @@ group :production do
   gem 'pg', '0.21.0'
 end
 
-gem 'carrierwave', '~> 1.3', '>= 1.3.1'
+gem 'carrierwave', '~> 1.3'
 gem 'mini_magick'
 gem 'acts-as-taggable-on'
 gem 'ransack'
